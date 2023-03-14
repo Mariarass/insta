@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {useUsersStore} from "@/stores/users";
 import {storeToRefs} from "pinia";
 import Card from "@/components/card/Card.vue";
@@ -9,9 +9,9 @@ import Observer from "@/components/observer/Observer.vue";
 const userStore = useUsersStore()
 const {user} = storeToRefs(userStore)
 
-const posts = ref([])
+const posts = ref<any>([])
 const lastCardIndex = ref(2)
-const owner_ids = ref([])
+const owner_ids = ref<any>([])
 const reachEnd = ref(false)
 const isLoading = ref(false)
 
@@ -22,7 +22,8 @@ const fetchData = async () => {
       .select('following_id')
       .eq('followers_id', user.value?.id)
   if (followings) {
-    owner_ids.value = followings?.map(el => el.following_id) || []
+
+    owner_ids.value = followings?.map(el => el.following_id)
     const {data} = await supabase
         .from('posts')
         .select()
@@ -51,8 +52,11 @@ const fetchNextSet = async () => {
         .in('owner_id', owner_ids.value)
         .range(lastCardIndex.value + 1, lastCardIndex.value + 3)
         .order('created_at', {ascending: false})
+//@ts-ignore
     posts.value = [...posts.value, ...data]
+
     lastCardIndex.value = lastCardIndex.value + 3
+    //@ts-ignore
     if (!data.length) {
 
       reachEnd.value = true

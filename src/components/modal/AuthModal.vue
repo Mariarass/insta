@@ -63,7 +63,7 @@ const handleOk = async (e: MouseEvent) => {
     </template>
     <p class="test">
       Use test account :<br/>
-      login - maria@gmail.com<br/>
+      login - test@gmail.com<br/>
       password - 123456
     </p>
 

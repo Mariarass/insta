@@ -1,4 +1,4 @@
-<script setup >
+<script setup lang="ts">
 import {defineProps} from "vue";
 import {supabase} from "@/supabase";
 import { useRouter} from "vue-router";

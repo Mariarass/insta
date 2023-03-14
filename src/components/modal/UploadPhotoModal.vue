@@ -4,8 +4,9 @@ import {supabase} from "@/supabase";
 import {useUsersStore} from "@/stores/users";
 import {storeToRefs} from "pinia";
 import {CloudUploadOutlined} from '@ant-design/icons-vue'
-import {convertFileToBase64} from "@/utils/converFile";
+
 import {useProfileStore} from "@/stores/profile";
+import {convertFileToBase64} from "@/utils/converFile";
 
 const userStore = useUsersStore()
 const profileStore = useProfileStore()

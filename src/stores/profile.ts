@@ -28,8 +28,6 @@ export const useProfileStore = defineStore('profile', () => {
                 .eq('followers_id', loggedInUser.value.id)
                 .eq('following_id', user.value.id)
                 .single()
-
-            console.log(data)
             if (data) {
                 isFollowing.value = true
             } else {

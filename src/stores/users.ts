@@ -99,7 +99,7 @@ export const useUsersStore = defineStore('users', () => {
 
 
     const handleLogout =async () => {
-        console.log('helo')
+
         const res=await supabase.auth.signOut()
         console.log(res)
         user.value=null
@@ -107,7 +107,7 @@ export const useUsersStore = defineStore('users', () => {
     }
 
     const getUser = async () => {
-        console.log(user)
+
         isUserLoading.value = true
         const {data} = await supabase.auth.getUser()
 
